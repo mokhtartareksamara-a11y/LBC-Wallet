@@ -1,0 +1,52 @@
+/* globals.css for LBC-Wallet Project */
+
+/* Obsidian HUD Design System Styles */
+
+body {
+    background: rgba(0, 0, 0, 0.5); /* glassmorphism effect */
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+/* Glass morphism card styles */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 40px rgba(0, 115, 255, 0.6);
+    animation: glow 1s infinite alternate;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 115, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(0, 115, 255, 1);
+    }
+}
+
+/* Button Styles */
+.btn {
+    background-color: rgba(0, 115, 255, 0.8);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: rgba(0, 115, 255, 1);
+    transform: scale(1.05);
+}
