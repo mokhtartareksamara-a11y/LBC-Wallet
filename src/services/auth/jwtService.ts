@@ -1,17 +1,25 @@
 // Zero-Gas JWT Authentication Service
+import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
+
+const secret = process.env.JWT_SECRET;
+if (!secret && process.env.NODE_ENV === 'production') {
+    throw new Error('JWT_SECRET environment variable must be set in production.');
+}
 
 class JWTService {
-    constructor(secret) {
-        this.secret = secret;
+    private readonly secret: string;
+
+    constructor(jwtSecret: string) {
+        this.secret = jwtSecret;
     }
 
-    generateToken(payload) {
-        // Logic to generate JWT token
+    generateToken(payload: object, options?: SignOptions): string {
+        return jwt.sign(payload, this.secret, { algorithm: 'HS256', ...options });
     }
 
-    verifyToken(token) {
-        // Logic to verify JWT token
+    verifyToken(token: string): JwtPayload | string {
+        return jwt.verify(token, this.secret, { algorithms: ['HS256'] });
     }
 }
 
-module.exports = new JWTService('your-secret-key');
+export default new JWTService(secret ?? 'change-me-in-development');

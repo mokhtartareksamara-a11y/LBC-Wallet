@@ -28,6 +28,13 @@ export interface UseMarketplaceSpotlightResult {
 }
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+/** Default spotlight refresh interval: 6 hours (matches specification). */
+const DEFAULT_REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
+
+// ---------------------------------------------------------------------------
 // Ranking algorithm
 // ---------------------------------------------------------------------------
 
@@ -224,7 +231,7 @@ export function useMarketplaceSpotlight(
     categories,
     // 6-hour interval matches the specification ("Refresh: Every 6 hours").
     // Adjust downward (e.g. 1_800_000 for 30 min) if fresher data is required.
-    refreshInterval = 6 * 60 * 60 * 1000,
+    refreshInterval = DEFAULT_REFRESH_INTERVAL_MS,
   } = options;
 
   const [spotlightItems, setSpotlightItems] = useState<SpotlightItem[]>([]);

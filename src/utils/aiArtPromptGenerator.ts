@@ -224,11 +224,11 @@ function buildGenericPrompts(
 // Prompt length validation
 // ---------------------------------------------------------------------------
 function validatePromptLength(prompt: string, platform: string): string {
-  // Token count is approximated using the common rule-of-thumb of ~4 characters per
-  // token (derived from GPT/OpenAI tokenizer benchmarks on English prose).
+  // Approximate characters per token (GPT/OpenAI tokenizer benchmark on English prose).
+const CHARS_PER_TOKEN = 4;
   // The 75–150 token target is the documented sweet-spot for DALL-E and Midjourney
   // prompt quality — short enough to avoid truncation, long enough for detail.
-  const approxTokens = Math.ceil(prompt.length / 4);
+  const approxTokens = Math.ceil(prompt.length / CHARS_PER_TOKEN);
   if (approxTokens < 75 || approxTokens > 150) {
     console.warn(
       `[aiArtPromptGenerator] ${platform} prompt token count (~${approxTokens}) ` +
