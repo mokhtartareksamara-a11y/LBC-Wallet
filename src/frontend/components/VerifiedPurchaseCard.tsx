@@ -282,7 +282,7 @@ const VerifiedPurchaseCard: React.FC<VerifiedPurchaseCardProps> = ({
       ) : null}
 
       {/* Post body */}
-      <div className="p-5 space-y-4">
+      <div className="p-5 space-y-5">
         {/* Verification badge */}
         {transaction && <TransactionBadge transaction={transaction} />}
 

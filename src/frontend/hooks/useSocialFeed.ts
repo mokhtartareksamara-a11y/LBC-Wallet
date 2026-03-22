@@ -173,6 +173,10 @@ export function useSocialFeed(): UseSocialFeedReturn {
       socket.disconnect();
       socketRef.current = null;
     };
+    // The WebSocket connection is intentionally initialised once on mount and
+    // must not reconnect on every render cycle. prependPost/updatePost are
+    // stable callbacks defined after this effect, so they are accessed via
+    // closure rather than as dependencies to keep a single persistent socket.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
