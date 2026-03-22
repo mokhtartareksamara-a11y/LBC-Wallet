@@ -10,7 +10,7 @@
   "dependencies": {
     "@solana/web3.js": "^1.87.6",
     "jsonwebtoken": "^9.0.2",
-    "next": "^14.2.35",
+    "next": "15.5.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
