@@ -1,30 +1,19 @@
-import React from 'react';
-import { ConnectionProvider } from '@solana/wallet-adapter-react';
-import { WalletProvider, WalletModalProvider } from '@solana/wallet-adapter-react';
-import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
-import { ThemeProvider } from 'styled-components';
-import { ObsidianLuxuryTheme } from 'your-theme-library'; // Adjust the import based on your theme library
+import type { Metadata } from 'next';
+import './globals.css';
 
-const AppLayout: React.FC = ({ children }) => {
-    const network = 'mainnet-beta'; // or your preferred network
-    const endpoint = `https://api.solana.com`; // Adjust based on your needs
-
-    const wallets = [
-        new PhantomWalletAdapter(),
-        new SolflareWalletAdapter({ network }),
-    ];
-
-    return (
-        <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-                <WalletModalProvider>
-                    <ThemeProvider theme={ObsidianLuxuryTheme}>
-                        {children}
-                    </ThemeProvider>
-                </WalletModalProvider>
-            </WalletProvider>
-        </ConnectionProvider>
-    );
+export const metadata: Metadata = {
+  title: 'LBC Wallet',
+  description: 'High-performance hybrid cryptographic gateway for the LBC Hub ecosystem',
 };
 
-export default AppLayout;
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="dark">
+      <body className="bg-gray-950 text-white antialiased">{children}</body>
+    </html>
+  );
+}
