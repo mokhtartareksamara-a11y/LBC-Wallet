@@ -222,7 +222,9 @@ export function useMarketplaceSpotlight(
     position = 'top',
     displayCount = 5,
     categories,
-    refreshInterval = 6 * 60 * 60 * 1000, // 6 hours
+    // 6-hour interval matches the specification ("Refresh: Every 6 hours").
+    // Adjust downward (e.g. 1_800_000 for 30 min) if fresher data is required.
+    refreshInterval = 6 * 60 * 60 * 1000,
   } = options;
 
   const [spotlightItems, setSpotlightItems] = useState<SpotlightItem[]>([]);

@@ -19,6 +19,13 @@ interface ProfileHeaderProps {
 }
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+/** Duration in ms before the first-load confetti animation is hidden. */
+const CONFETTI_DURATION_MS = 3000;
+
+// ---------------------------------------------------------------------------
 // Reputation tier helpers
 // ---------------------------------------------------------------------------
 
@@ -342,7 +349,7 @@ export function ProfileHeader({ userId, currentUserId }: ProfileHeaderProps) {
 
   // ----- Hide confetti after 3 seconds -----
   useEffect(() => {
-    const t = setTimeout(() => setShowConfetti(false), 3000);
+    const t = setTimeout(() => setShowConfetti(false), CONFETTI_DURATION_MS);
     return () => clearTimeout(t);
   }, []);
 

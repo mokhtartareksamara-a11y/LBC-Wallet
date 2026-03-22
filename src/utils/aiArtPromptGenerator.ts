@@ -18,7 +18,9 @@ interface CacheEntry {
 
 const promptCache = new Map<string, CacheEntry>();
 
-const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+// 30-day TTL matches the specification. Adjust to a shorter value
+// (e.g. 7 * 24 * 60 * 60 * 1000) if prompt templates update frequently.
+const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
 function getCached(key: string): AIArtPromptResult | null {
   const entry = promptCache.get(key);
@@ -222,7 +224,10 @@ function buildGenericPrompts(
 // Prompt length validation
 // ---------------------------------------------------------------------------
 function validatePromptLength(prompt: string, platform: string): string {
-  // Approximate token count: ~4 chars per token
+  // Token count is approximated using the common rule-of-thumb of ~4 characters per
+  // token (derived from GPT/OpenAI tokenizer benchmarks on English prose).
+  // The 75–150 token target is the documented sweet-spot for DALL-E and Midjourney
+  // prompt quality — short enough to avoid truncation, long enough for detail.
   const approxTokens = Math.ceil(prompt.length / 4);
   if (approxTokens < 75 || approxTokens > 150) {
     console.warn(
