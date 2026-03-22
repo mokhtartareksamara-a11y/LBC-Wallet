@@ -1,18 +1,21 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  content: [
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/frontend/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: '#1a1a1a', // Deep black
-        primary: '#00bcd4',     // Teal accents
-        // Add more colors as needed
+        background: '#1a1a1a',
+        primary: '#00bcd4',
       },
-      // Add any additional design tokens or configurations here
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
+
+export default config;
