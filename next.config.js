@@ -3,7 +3,6 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     // Use remotePatterns instead of the broader `domains` list to restrict
     // which remote images the Image Optimizer will process.
