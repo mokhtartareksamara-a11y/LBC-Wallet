@@ -3,11 +3,14 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ['example.com'], // Replace with your image domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+      },
+    ],
   },
-  // Add more configurations as needed
 };
 
 module.exports = nextConfig;
